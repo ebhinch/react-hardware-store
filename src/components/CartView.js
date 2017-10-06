@@ -11,3 +11,5 @@ class CartView extends Component {
 }
 
 export default CartView;
+
+//within shopview, add "add to cart" button
