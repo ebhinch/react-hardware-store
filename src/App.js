@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 //dont techinically need the .js on next file bc webpack will assume
 import HomePage from "./components/HomePage.js";

@@ -22,3 +22,4 @@ class EditSaleItem extends Component {
 }
 
 export default EditSaleItem;
+

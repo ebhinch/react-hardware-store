@@ -1,23 +1,17 @@
-import React, { Component } from "react";
-//extends says we're inheriting everything that comes from react and bringing it into regular javascript file
-
-//import homepage into header
-//below, within "return" include header within div to return - this makes it render on screen
-import Header from "./Header.js"
-import Shop from "./Shop.js"
-
+import React, { Component } from 'react'
+import Header from './Header'
+import Shop from './Shop'
 
 class HomePage extends Component {
-    render(){
-        return(
-            <div>
-                <Header />
-                <hr />
-                <Shop />
-            </div>
-        )
-    }
-    
+  render () {
+    return (
+      <div>
+        <Header />
+        <hr />
+        <Shop />
+      </div>
+    )
+  }
 }
 
-export default HomePage; 
+export default HomePage

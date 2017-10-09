@@ -4,32 +4,84 @@ import ShopView from './ShopView'
 import CartView from './CartView'
 
 class Shop extends Component {
-  constructor () {
+  constructor() {
     super()
 
     this.state = {
-        //will show admin view as long as its true
-        isAdmin: true
+      isAdmin: true,
+      productList: [
+        {
+          productName: 'Hammer',
+          description: 'Itsa hammer',
+          price: 12.3
+        },
+        {
+          productName: 'Nail',
+          description: 'Itsa nail',
+          price: 0.12
+        }
+      ],
+      cartList: []
     }
   }
 
-  toggleIsAdmin = () => {
-      //whatever you put inside {} after setState is what you want to change
-      this.setState({isAdmin: !this.state.isAdmin})
+  addProductToProductList = (newProduct) => {
+    const newProductList = [...this.state.productList]
+    newProductList.push(newProduct)
+    this.setState({ productList: newProductList })
   }
 
-  render () {
+  addProductToCartList = (index) => {
+    const newCartList = [...this.state.cartList]
+    newCartList.push(this.state.productList[index])
+    this.setState({ cartList: newCartList })
+  }
+
+  deleteProductFromProductList = (id) => {
+    const newProductList = [...this.state.productList]
+    newProductList.splice(id, 1)
+    this.setState({ productList: newProductList })
+  }
+
+  deleteProductFromCartList = (index) => {
+    const newCartList = [...this.state.cartList]
+    newCartList.splice(index, 1)
+    this.setState({ cartList: newCartList })
+  }
+
+  toggleIsAdmin = () => {
+    this.setState({ isAdmin: !this.state.isAdmin })
+  }
+
+
+  render() {
     return (
-      <div className="shop">
-          <button onClick={this.toggleIsAdmin}>Toggle Admin</button>
-        <div className="products">
-          {this.state.isAdmin ? <AdminView /> : <ShopView />}
+      <div >
+        <div className="toggleButton">
+         <button onClick={this.toggleIsAdmin}>Toggle Admin</button>
         </div>
-        <CartView />
+        <hr />
+        <br />
+        <div className="shop">
+          <div className="products">
+            {this.state.isAdmin
+              ? <AdminView
+                productList={this.state.productList}
+                addProductToProductList={this.addProductToProductList}
+                deleteProductFromProductList={this.deleteProductFromProductList}
+              /> : <ShopView
+                productList={this.state.productList}
+                addProductToCartList={this.addProductToCartList}
+              />}
+          </div>
+          <CartView
+            cartList={this.state.cartList}
+            deleteProductFromCartList={this.deleteProductFromCartList}
+          />
+        </div>
       </div>
     )
   }
 }
 
 export default Shop
-

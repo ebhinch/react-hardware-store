@@ -18,6 +18,11 @@
   font-size: 1.5em;
 }
 
+.toggleButton {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
 .App-intro {
   font-size: large;
 }
@@ -27,7 +32,7 @@
   to { transform: rotate(360deg); }
 }
 
-.shop{
+.shop {
   display: flex;
   justify-content: space-between;
   width: 95%;
@@ -37,5 +42,13 @@
 .products{
   border: 1px solid black;
   width: 60%;
-  min-height: 500px;
+  min-height: 600px;
+  box-shadow: 1px 1px 3px black;
+}
+
+.cart {
+  border: 1px solid black;
+  width: 35%;
+  min-height: 600px;
+  box-shadow: 1px 1px 3px black;
 }
